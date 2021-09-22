@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/bash
 
 # Defines software installer functions.
 
@@ -30,9 +30,9 @@ install_app() {
     'app')
       cp -a "$1/$2" "$install_root";;
     'prefPane')
-      sudo cp -pR "$1/$2" "$install_root";;
+       cp -pR "$1/$2" "$install_root";;
     'qlgenerator')
-      sudo cp -pR "$1/$2" "$install_root" && qlmanage -r;;
+       cp -pR "$1/$2" "$install_root" && qlmanage -r;;
     *)
       printf "ERROR: Unknown file extension: $file_extension.\n"
   esac
@@ -166,8 +166,8 @@ install_pkg() {
   local install_root=$(get_install_root "$2")
 
   printf "Installing: $install_root/$2...\n"
-  local package=$(sudo find "$1" -maxdepth 1 -type f -name "*.pkg" -o -name "*.mpkg")
-  sudo installer -pkg "$package" -target /
+  local package=$( find "$1" -maxdepth 1 -type f -name "*.pkg" -o -name "*.mpkg")
+   installer -pkg "$package" -target /
 }
 export -f install_pkg
 

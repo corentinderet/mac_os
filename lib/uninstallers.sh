@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/bash
 
 # Defines uninstall functions.
 
@@ -21,7 +21,7 @@ uninstall_application() {
   if [[ $response =~ $regex ]]; then
     local app_file="${!keys[$response]}"
     local app_path=$(get_install_path "${app_file}")
-    sudo rm -rf "$app_path"
+     rm -rf "$app_path"
     printf "Uninstalled: ${app_path}\n"
   fi
 }
